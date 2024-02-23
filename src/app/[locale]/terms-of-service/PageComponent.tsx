@@ -39,7 +39,7 @@ const PageComponent = ({
           <p>
             {data('h4_5_p')}<a
             href={`https://whooper.ai/${locale}/privacy-policy`}
-            className={"text-white"}>https://sorawebui.com/privacy-policy</a>
+            className={"text-white"}>https://soraainow.com/privacy-policy</a>
           </p>
           <h4 className={"text-white font-bold"}>{data('h4_6')}</h4>
           <p>{data('h4_6_p')}</p>
@@ -47,7 +47,7 @@ const PageComponent = ({
           <p>{data('h4_7_p')}</p>
           <h4 className={"text-white font-bold"}>{data('h4_8')}</h4>
           <p>
-            {data('h4_8_p')}<a href="mailto:hello@sorawebui.com" className={"text-white"}>hello@sorawebui.com</a>.
+            {data('h4_8_p')}<a href="mailto:sora@soraainow.com" className={"text-white"}>sora@soraainow.com</a>.
           </p>
         </div>
       </main>

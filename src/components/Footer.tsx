@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const navigation = {
   product: [
-    {name: 'SoraWebui', href: 'https://sorawebui.com'}
+    {name: 'SoraAINow', href: 'https://soraainow.com'}
   ],
   legal: [
     {name: 'Privacy Policy', href: '/privacy-policy'},
@@ -27,9 +27,9 @@ export default function Footer({
               <Image
                 className="h-10"
                 src="/appicon.svg"
-                width={32}
-                height={32}
-                alt="Sorawebui.com"
+                width={64}
+                height={64}
+                alt="Soraainow.com"
               />
             </a>
             <p className="text-sm text-gray-300">
