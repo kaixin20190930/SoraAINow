@@ -16,7 +16,7 @@ export default function Footer({
                                  description=''
                                }) {
   return (
-    <footer className="bg-[#020d24]" aria-labelledby="footer-heading">
+    <footer className="bg-[#000000]" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
