@@ -18,8 +18,8 @@ const PageComponent = ({
     const router = useRouter();
 
     const [textStr, setTextStr] = useState('');
-    const {setShowGeneratingModal, setShowLoadingModal} = useCommonContext();
-
+    const {setShowGeneratingModal, setShowLoadingModal, setShowLoginModal} = useCommonContext();
+    const {userData} = useCommonContext();
 
     const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
@@ -27,9 +27,16 @@ const PageComponent = ({
             setVideoList(randomVideo(2));
             return;
         }
+
+        if (!userData) {
+            setShowLoginModal(true);
+            return;
+        }
         setShowGeneratingModal(true);
         const body = {
-            prompt: textStr
+            prompt: textStr,
+            user_id: userData?.user_id
+
         };
         const response = await fetch(`/${locale}/api/generate`, {
             method: 'POST',
@@ -135,31 +142,35 @@ const PageComponent = ({
                             </div>
                         </div>
                         <div className="inset-x-px bottom-1 bg-[#000000]">
-                            <div
-                                className="flex justify-center items-center space-x-3 border-gray-200 px-2 py-2">
-                                <div className="pt-2 w-1/4">
-                                    <button
-                                        type="submit"
-                                        className="w-full inline-flex justify-center items-center rounded-md bg-[#2d6ae0] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800"
-                                    >
-                                        <div
-                                            className="c-PJLV-eVVBcb-size-s2-bold c-PJLV-kGaJaF-size-b2-bold">
-                                            {indexLanguageText.buttonText}</div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                             fill="none">
-                                            <g clip-path="url(#a)">
-                                                <path fill="#fff"
-                                                      d="M8.578 9.753c.11.33.576.33.686 0l.645-1.937a2.89 2.89 0 0 1 1.829-1.828l1.936-.645a.361.361 0 0 0 0-.686l-1.937-.645a2.89 2.89 0 0 1-1.828-1.829L9.264.247a.361.361 0 0 0-.686 0l-.645 1.937a2.89 2.89 0 0 1-1.828 1.828l-1.937.645a.36.36 0 0 0 0 .686l1.937.645a2.89 2.89 0 0 1 1.828 1.828l.645 1.937Zm-3.863 5.099a.217.217 0 0 0 .412 0l.387-1.162a1.736 1.736 0 0 1 1.097-1.097l1.162-.387a.217.217 0 0 0 0-.412l-1.162-.387a1.734 1.734 0 0 1-1.097-1.097l-.387-1.162a.217.217 0 0 0-.412 0l-.387 1.162a1.734 1.734 0 0 1-1.097 1.097l-1.162.387a.217.217 0 0 0 0 .412l1.162.387a1.735 1.735 0 0 1 1.097 1.097l.387 1.162Z"></path>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="a">
-                                                    <path fill="#fff" d="M0 16h16V0H0z"></path>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </button>
+                            <form onSubmit={handleSubmit} className="relative shadow-lg">
+                                <div
+                                    className="flex justify-center items-center space-x-3 border-gray-200 px-2 py-2">
+                                    <div className="pt-2 w-1/4">
+                                        <button
+                                            type="submit"
+                                            className="w-full inline-flex justify-center items-center rounded-md bg-[#2d6ae0] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-800"
+                                        >
+                                            <div
+                                                className="c-PJLV-eVVBcb-size-s2-bold c-PJLV-kGaJaF-size-b2-bold">
+                                                {indexLanguageText.buttonText}
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="none">
+                                                <g clip-path="url(#a)">
+                                                    <path fill="#fff"
+                                                          d="M8.578 9.753c.11.33.576.33.686 0l.645-1.937a2.89 2.89 0 0 1 1.829-1.828l1.936-.645a.361.361 0 0 0 0-.686l-1.937-.645a2.89 2.89 0 0 1-1.828-1.829L9.264.247a.361.361 0 0 0-.686 0l-.645 1.937a2.89 2.89 0 0 1-1.828 1.828l-1.937.645a.36.36 0 0 0 0 .686l1.937.645a2.89 2.89 0 0 1 1.828 1.828l.645 1.937Zm-3.863 5.099a.217.217 0 0 0 .412 0l.387-1.162a1.736 1.736 0 0 1 1.097-1.097l1.162-.387a.217.217 0 0 0 0-.412l-1.162-.387a1.734 1.734 0 0 1-1.097-1.097l-.387-1.162a.217.217 0 0 0-.412 0l-.387 1.162a1.734 1.734 0 0 1-1.097 1.097l-1.162.387a.217.217 0 0 0 0 .412l1.162.387a1.735 1.735 0 0 1 1.097 1.097l.387 1.162Z"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="a">
+                                                        <path fill="#fff" d="M0 16h16V0H0z"></path>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </button>
+                                    </div>
+
                                 </div>
-                            </div>
+                            </form>
                         </div>
 
                         <div className={"border-[14px] border-[#ffffff1f] object-fill w-[90%] mx-auto mt-8"}>

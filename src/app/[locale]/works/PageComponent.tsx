@@ -72,7 +72,7 @@ const PageComponent = ({
               </div>
             </div>
             <div key={"more"} className={"px-6 py-4"}>
-              <Link href={`/${locale}/playground`}
+              <Link href={`/${locale}/home`}
                     className={"flex justify-center items-center text-xl text-red-400 hover:text-blue-600"}>
                 {worksText.generateNew} {'>>'}
               </Link>
