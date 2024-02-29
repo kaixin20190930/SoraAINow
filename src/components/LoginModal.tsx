@@ -52,7 +52,7 @@ const LoginModal = ({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel
-                className="relative transform overflow-hidden rounded-lg bg-black px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                className="relative transform overflow-hidden rounded-lg bg-gray-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                 <div>
 
                   <div className="mt-3 text-center sm:mt-5">
@@ -62,19 +62,19 @@ const LoginModal = ({
                         <Image
                           className="h-300 w-200"
                           src="/soraainow.svg"
-                          width={96}
+                          width={128}
                           height={54}
                           alt="Whooper"/>
                       </a>
                     </Dialog.Title>
-                    <div className="mt-2">
-                      <p className="text-sm text-white">
-                        {loginModalDesc}
-                      </p>
-                    </div>
+                    {/*<div className="mt-2">*/}
+                    {/*  <p className="text-sm text-purple-600">*/}
+                    {/*    {loginModalDesc}*/}
+                    {/*  </p>*/}
+                    {/*</div>*/}
                   </div>
                 </div>
-                <div className="mt-5 sm:mt-6 space-y-3 bg-purple-800">
+                <div className="mt-5 sm:mt-6 space-y-3 bg-purple-600">
                   {
                     loadGoogle ? (
                       <button
